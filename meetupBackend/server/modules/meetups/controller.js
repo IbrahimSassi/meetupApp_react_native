@@ -1,6 +1,6 @@
 import Meetup from './model';
 
-export const CreateMeetup = async(req, res) => {
+export const CreateMeetup = async (req, res) => {
     const { title, description } = req.body;
     const newMeetup = new Meetup({ title, description });
 
@@ -13,7 +13,7 @@ export const CreateMeetup = async(req, res) => {
 
 }
 
-export const getAllMeetups = async(req, res) => {
+export const getAllMeetups = async (req, res) => {
     try {
         return res.status(200).json({ meetups: await Meetup.find({}) });
 
