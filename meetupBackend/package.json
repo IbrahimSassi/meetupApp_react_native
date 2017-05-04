@@ -15,6 +15,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "body-parser": "^1.17.1",
+    "eslint-config-equimper": "^1.6.4",
     "express": "^4.15.2",
     "mongoose": "^4.7.7",
     "morgan": "^1.8.1"

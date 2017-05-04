@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
 
 const MeetupSchema = new Schema({
 
@@ -9,9 +9,18 @@ const MeetupSchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    eventDate: {
+        type: Date
+    },
+    group: {
+        type: Schema.Types.ObjectId,
+        ref: 'Group'
 
     }
 
+}, {
+    timestamps: true
 });
 
 export default mongoose.model('Meetup', MeetupSchema);
