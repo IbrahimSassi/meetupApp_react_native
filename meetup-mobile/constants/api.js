@@ -1,32 +1,24 @@
 import ApiUtils from './ApiUtils'
+import axios from 'axios';
 
+axios.defaults.baseURL = "http://192.168.1.2:3000/api";
+const fakeGroupId = "590ba0a614740128f07208a1";
 
-export const fetchMeetups = () =>
-    fetch('localhost:3000/api/meetups')
-        .then(response => response.json())
-        .catch((err) => {
-            console.log("err", err)
-            return {
-                "meetups": [
-                    {
-                        "_id": "5909bb0756c03f29f0589bfc",
-                        "title": " React Meeting",
-                        "description": " lets CREATE AN APP WITH REACT NATIVE",
-                        "__v": 0
-                    },
-                    {
-                        "_id": "5909bcba4511ac15547ecaa1",
-                        "title": " Angular Meeting",
-                        "description": " This is a second meetup",
-                        "__v": 0
-                    },
-                    {
-                        "_id": "5909bcc14511ac15547ecaa2",
-                        "title": " Vue Meeting",
-                        "description": " This is a third meetup",
-                        "__v": 0
-                    }
-                ]
-            }
-        });
+class MeetupApi {
+    constructor()
+    {
+        this.groupId = fakeGroupId;
+        this.path=`/groups/${this.groupId}/meetups`;
+    }
 
+    async fetchGroupMeetups()
+    {
+        const {data} = await axios.get(this.path);
+        return data.meetups;
+    }
+
+}
+export
+{
+    MeetupApi
+}
