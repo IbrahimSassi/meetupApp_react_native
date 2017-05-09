@@ -19,7 +19,7 @@ const MyMeetupsList = ({meetups}) => (
                     <View key={i} style={styles.meetupCard}>
                         <View style={styles.meetupCardTopContainer}>
                             <Text style={styles.meetupCardTitle}>
-
+                                {meetup.title}
                             </Text>
                         </View>
                         <View style={styles.meetupCardBottomContainer}>

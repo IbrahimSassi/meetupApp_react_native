@@ -5,6 +5,9 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 
+import {FontAwesome, MaterialIcons} from '@expo/vector-icons';
+import Colors from '../../../constants/Colors';
+
 import {MeetupApi} from '../../../constants/api';
 import styles from './style/HomeScreen';
 
@@ -19,10 +22,24 @@ class HomeScreen extends Component {
         meetupApi
     };
 
+
+    static navigationOptions = {
+        tabBarLabel: 'Home',
+        // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+        tabBarIcon: ({ tintColor }) => (
+            <FontAwesome
+                name="home"
+                size={25}
+                color={tintColor}
+            />
+        ),
+    };
+
+
     state = {
         loading: false,
         meetups: []
-    }
+    };
 
     async componentDidMount() {
         this.setState({loading: true});
@@ -30,7 +47,7 @@ class HomeScreen extends Component {
         // setTimeout(() => {
         console.log("hello");
         console.log(meetups);
-            this.setState({loading: false, meetups});
+        this.setState({loading: false, meetups});
         // }, 1000);
     }
 
@@ -46,7 +63,7 @@ class HomeScreen extends Component {
                     <Text>Home Screen</Text>
                 </View>
                 <View style={styles.bottomContainer}>
-                    <MyMeetupsList meetups={this.state.meetups} />
+                    <MyMeetupsList meetups={this.state.meetups}/>
                 </View>
             </View>
         );
